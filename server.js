@@ -28,6 +28,6 @@ const options = {
 };
 
 // Levantar servidor HTTPS
-https.createServer(options, app).listen(process.env.HTTPS_PORT || 9443, () => {
-  console.log(`🔐 Servidor HTTPS levantado en puerto ${process.env.HTTPS_PORT || 9443}`);
+https.createServer(options, app).listen(process.env.PORT || 9443, () => {
+  console.log(`🔐 Servidor HTTPS levantado en puerto ${process.env.PORT || 9443}`);
 });
