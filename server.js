@@ -30,8 +30,8 @@ const options = {
 // Levantar servidor HTTPS
 https.createServer(options, app).listen(process.env.PORT || 9443, () => {
   console.log(`🔐 Servidor HTTPS levantado en puerto ${process.env.PORT || 9443}`);
-});*/
-
+});
+*/
 const express = require('express');
 const cors = require('cors');
 //const sql = require('mssql');
