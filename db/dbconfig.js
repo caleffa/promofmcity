@@ -1,4 +1,3 @@
-/*
 // Sql Server
 require('dotenv').config();
 
@@ -13,11 +12,12 @@ const config = {
   }
 };
 module.exports = config;
-*/
+/*
 
 // MySql
 
 const mysql = require('mysql2/promise');
+require('dotenv').config();
 
 const db = mysql.createPool({
     host: process.env.DB_SERVER,
@@ -26,4 +26,4 @@ const db = mysql.createPool({
     database: process.env.DB_NAME
 });
 
-module.exports = config;
+module.exports = config;*/
