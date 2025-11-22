@@ -39,7 +39,7 @@ require('dotenv').config();
 
 //const dbconfig     = require('./db/dbconfig');
 const promosRoutes = require('./routes/offers');
-//const usersRoutes  = require('./routes/users');
+const usersRoutes  = require('./routes/users');
 //const itemsRoutes  = require('./routes/items');
 //const storesRoutes = require('./routes/stores');
 
@@ -49,7 +49,7 @@ app.use(express.json());
 
 // RUTAS
 app.use('/prc/promo/api', promosRoutes);
-//app.use('/api/users', usersRoutes);
+app.use('/api/users', usersRoutes);
 //app.use('/api/items', itemsRoutes);
 //app.use('/api/stores', storesRoutes);
 
