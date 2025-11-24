@@ -4,7 +4,7 @@ const db = require('../db/dbconfig'); // conexión MySQL
 
 exports.getAllUsers = async (req, res) => {
     try {
-        const [rows] = await db.query('SELECT id,first_name,last_name,email,phone,role,status,created_at,updated_at FROM users');
+        const [rows] = await db.query('SELECT id,first_name,last_name,email,phone,role,status,created_at,updated_at FROM user');
         res.json(rows);
     } catch (error) {
         console.error('Error al obtener usuarios:', error);
@@ -22,7 +22,7 @@ exports.createUser = async (req, res) => {
         }
 
         const sql = `
-            INSERT INTO users (username, email, password, last_name, first_name)
+            INSERT INTO user (username, email, password, last_name, first_name)
             VALUES (?, ?, ?, ?, ?)
         `;
 
