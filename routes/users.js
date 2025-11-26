@@ -5,7 +5,7 @@ const verifyToken = require('../middleware/verifyToken');
 
 // rutas protegidas
 router.get('/', verifyToken, usersController.getAllUsers);
-router.post('/', usersController.createUser);
+router.post('/', verifyToken, usersController.createUser);
 router.put('/:id', verifyToken, usersController.updateUser);
 router.delete('/:id', verifyToken, usersController.deleteUser);
 router.get("/:id", verifyToken, usersController.getUserById);

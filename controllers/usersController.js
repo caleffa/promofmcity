@@ -121,7 +121,7 @@ exports.loginUser = async (req, res) => {
         }
 
         const [rows] = await db.query(
-            "SELECT id, username, email, password, first_name, last_name FROM user WHERE email = ?",
+            "SELECT id, username, email, password, name, lastname FROM user WHERE email = ?",
             [email]
         );
 
@@ -148,8 +148,8 @@ exports.loginUser = async (req, res) => {
             user: {
                 id: user.id,
                 username: user.username,
-                firstname: user.first_name,
-                lastname: user.last_name,
+                name: user.name,
+                lastname: user.lastname,
                 email: user.email
             }
         });
