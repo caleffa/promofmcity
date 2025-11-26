@@ -1,21 +1,23 @@
-// auth.js
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
+const jwt = require("jsonwebtoken");
 
-function verifyToken(req, res, next) {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1]; // "Bearer token"
+module.exports = (req, res, next) => {
+    const authHeader = req.headers["authorization"];
 
-  if (!token) {
-    return res.status(401).json({ error: 'Token requerido' });
-  }
+    if (!authHeader) {
+        return res.status(401).json({ error: "Token no proporcionado" });
+    }
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-    if (err) return res.status(403).json({ error: 'Token inválido o expirado' });
-    req.user = user;
-    next();
-  });
-}
+    const token = authHeader.split(" ")[1]; // Formato: Bearer token123
 
-module.exports = verifyToken;
+    if (!token) {
+        return res.status(401).json({ error: "Token inválido" });
+    }
 
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        req.user = decoded;  // Guarda los datos del token
+        next(); // Continúa al controller
+    } catch (error) {
+        return res.status(403).json({ error: "Token expirado o no válido" });
+    }
+};

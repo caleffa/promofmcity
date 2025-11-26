@@ -1,8 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const { getAllUsers,createUser } = require('../controllers/usersController');
+const usersController = require('../controllers/usersController');
+const verifyToken = require('../middleware/verifyToken');
 
-router.get('/', getAllUsers);
-router.post('/', createUser);
+// rutas protegidas
+router.get('/', verifyToken, usersController.getAllUsers);
+router.post('/', verifyToken, usersController.createUser);
+router.put('/:id', verifyToken, usersController.updateUser);
+router.delete('/:id', verifyToken, usersController.deleteUser);
+router.get("/:id", verifyToken, usersController.getUserById);
+
+// ruta sin token
+router.post('/login', usersController.loginUser);
 
 module.exports = router;
